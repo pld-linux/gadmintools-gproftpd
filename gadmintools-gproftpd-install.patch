@@ -1,0 +1,42 @@
+diff -urN gproftpd-8.3.2/Makefile.am gproftpd-8.3.2.new/Makefile.am
+--- gproftpd-8.3.2/Makefile.am	2007-01-17 23:08:52.000000000 +0100
++++ gproftpd-8.3.2.new/Makefile.am	2007-09-08 21:56:24.881789582 +0200
+@@ -29,28 +29,27 @@
+ 	if test -f $(DESTDIR)/usr/local/bin/consolehelper && test ! -f $(DESTDIR)/usr/local/bin/gproftpd; then \
+ 	   ln -s $(DESTDIR)/usr/local/bin/consolehelper $(DESTDIR)/usr/local/bin/gproftpd; \
+ 	fi;
++	if test ! -d $(DESTDIR)$(sysconfdir)/pam.d; then \
++	   $(mkinstalldirs) $(DESTDIR)$(sysconfdir)/pam.d; \
++	fi;
+ 	if test -d $(DESTDIR)$(sysconfdir)/pam.d; then \
+ 	   cp etc/pam.d/gproftpd $(DESTDIR)$(sysconfdir)/pam.d/; \
+ 	fi;
++	if test ! -d $(DESTDIR)$(sysconfdir)/security/console.apps; then \
++	   $(mkinstalldirs) $(DESTDIR)$(sysconfdir)/security/console.apps; \
++	fi;
+ 	if test -d $(DESTDIR)$(sysconfdir)/security/console.apps; then \
+ 	   cp etc/security/console.apps/gproftpd $(DESTDIR)$(sysconfdir)/security/console.apps/; \
+ 	fi;   
++	if test ! -d $(DESTDIR)$(datadir)/applications; then \
++	   $(mkinstalldirs) $(DESTDIR)$(datadir)/applications; \
++	fi;
+ 	if test -d $(DESTDIR)$(datadir)/applications; then \
+-	   cp desktop/net-gproftpd.desktop $(DESTDIR)$(datadir)/applications/; \
++	   cp desktop/net-gproftpd.desktop $(DESTDIR)$(datadir)/applications/gproftpd.desktop; \
+ 	fi;
+ 	if test -d $(DESTDIR)$(datadir)/gnome/apps/Internet; then \
+ 	   cp desktop/net-gproftpd.desktop $(DESTDIR)$(datadir)/gnome/apps/Internet/; \
+ 	fi;
+-	if test ! -d $(DESTDIR)$(datadir)/doc/gproftpd; then \
+-	   $(mkinstalldirs) $(DESTDIR)$(datadir)/doc/gproftpd; \
+-	   cp AUTHORS $(DESTDIR)$(datadir)/doc/gproftpd/; \
+-	   cp README $(DESTDIR)$(datadir)/doc/gproftpd/; \
+-	   cp ChangeLog $(DESTDIR)$(datadir)/doc/gproftpd/; \
+-	   cp COPYING $(DESTDIR)$(datadir)/doc/gproftpd/; \
+-	fi;
+-	if test ! -d $(DESTDIR)$(sysconfdir)/gproftpd; then \
+-	   $(mkinstalldirs) $(DESTDIR)$(sysconfdir)/gproftpd; \
+-	fi;
+ 	if test ! -d $(DESTDIR)$(sysconfdir)/gproftpd; then \
+ 	   $(mkinstalldirs) $(DESTDIR)$(sysconfdir)/gproftpd; \
+ 	fi;
