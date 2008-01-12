@@ -16,7 +16,8 @@ Source0:	http://mange.dynalias.org/linux/gproftpd/%{realname}-%{version}.tar.gz
 # Source0-md5:	0b8a06c4972a00b912b0afa3ae6ec539
 Patch0:		%{name}-install.patch
 URL:		http://mange.dynalias.org/linux.html
-BuildRequires:	gtk+2-devel
+BuildRequires:	gtk+2-devel >= 1:2.0.0
+BuildRequires:	pkgconfig
 Requires:	proftpd
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -68,7 +69,8 @@ fi
 %attr(755,root,root) %{_sbindir}/%{realname}
 %attr(755,root,root) %{_sbindir}/gprostats
 %dir %{_sysconfdir}/%{realname}
-%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{realname}/*
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{realname}/gproftpd.pem
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{realname}/gprotls.conf
 %config(noreplace) %verify(not md5 mtime size) /etc/pam.d/%{realname}
 %config(noreplace) %verify(not md5 mtime size) /etc/security/console.apps/%{realname}
 %{_desktopdir}/%{realname}.desktop
