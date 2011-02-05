@@ -6,7 +6,7 @@
 # - lookup for other BR-s
 %define		realname	gproftpd
 Summary:	A GTK+ administation tool for the ProFTPD server
-Summary(pl.UTF_8):	Narzędzie GTK+ do administracji serwerem ProFTPD
+Summary(pl.UTF-8):	Narzędzie GTK+ do administracji serwerem ProFTPD
 Name:		gadmintools-%{realname}
 Version:	8.3.2
 Release:	0.1
